@@ -1,10 +1,30 @@
 <template>
-  <div>jobs</div>
+  <div>
+    
+  </div>
 </template>
 
-<script>
-export default {
 
+<script>
+import { fetchJobsList } from '../api/index.js'
+export default {
+  data:()=>{
+    return{
+      jobs:[]
+    }
+  },
+  created(){
+    const vm = this;
+
+    fetchJobsList()
+      .then((response)=>{
+        console.log(response.data);
+        vm.jobs = response.data
+      })
+      .catch(
+
+      )
+  }
 }
 </script>
 
