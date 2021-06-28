@@ -7,7 +7,6 @@
         <router-link to="/jobs">jobs</router-link><div class="barItem">|</div>  
         <router-link to="/user">user</router-link><div class="barItem">|</div>  
         <router-link to="/item">item</router-link>
-        <router-link to="/chart">chart</router-link>
     </section>
     <h4 class="login-item">login</h4>
 </div>

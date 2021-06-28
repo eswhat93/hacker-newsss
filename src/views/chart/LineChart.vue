@@ -1,5 +1,4 @@
-// npm install chart.js@2.9.4 => 상위버전 에러로 다운그레이드해서 다운
-
+<script>
 import { Line, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
 
@@ -13,3 +12,4 @@ export default {
     this.renderChart(this.chartData, this.options)
   }
 }
+</script>

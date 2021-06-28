@@ -1,27 +1,12 @@
 <template>
-<<<<<<< HEAD
-  <div>
-      item
-      <!-- 차트 추가를 테스트 VueCharts.vue-->
-=======
   <div class="small">
     <line-chart :chart-data="datacollection"></line-chart>
     <button @click="fillData()">Randomize</button>
->>>>>>> ede7724b2e852fef450af90c19e19cacc9b87f2e
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-export default {
-
-}
-</script>
-
-<style>
-
-=======
-  import LineChart from '../chart/chart.js'
+  import LineChart from './chart/LineChart.vue'
 
   export default {
     components: {
@@ -64,5 +49,4 @@ export default {
     max-width: 600px;
     margin:  150px auto;
   }
->>>>>>> ede7724b2e852fef450af90c19e19cacc9b87f2e
 </style>
