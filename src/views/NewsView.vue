@@ -1,52 +1,69 @@
 <template>
 <!-- https://api.hnpwa.com/v0/news/1.json -->
-  <section class="content-container">
-    <div v-for="user,index in users" :key=user.id class="list">
-      {{index+1}}.
-      {{user.title}}
-      <div class="domain">
-        ({{user.domain}})
-      </div>
-    </div>
-  </section>
+  <div>
+    <ul class="news-list">
+      <li v-for="item in this.$store.state.news" :key=item.id class="post-list">
+        <!-- 포인트 영역 -->
+        <div class="point">
+          {{item.points}}
+        </div>
+        <!-- 기타정보 영역 -->
+        <div class="news-title">
+          <a :href="item.url" target="_blank">
+            {{item.title}}
+          </a>
+          <small class="link-text">{{item.time_ago}} 
+          by 
+          <router-link :to="`/user/${item.user}`">
+            {{item.user}}
+          </router-link>
+          </small>
+        </div>
+        
+        
+      </li>
+    </ul>
+  </div>
   
 </template>
 
 <script>
-import { fetchNewsList } from '../api/index.js';
 export default {
-  data:()=>{
-    return {
-      users:[]
-    }
-  },
   created(){
-    const vm = this;
-    fetchNewsList()
-    .then((response)=>{
-      console.log(response.data);
-      vm.users = response.data;
-    })
-    .catch((error)=>{
-      console.log(error);
-    })
+    this.$store.dispatch('FETCH_NEWS');
   }
 }
 </script>
 
-<style>
-.content-container{
+<style scoped>
+.news-list{
   display: flex;
   flex-direction:column;
 }
-.list{
-  background-color: #fff8e6;
+.post-list{
+  list-style:none;
+  align-content: center;
   display: flex;
-  padding-bottom: 10px;;
+  padding-bottom: 10px;
+  border-bottom:1px solie #eee;
+}
+.point{
+  width:80px;
+  height: 60px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  color:#42b88b;
 }
 .domain{
   color:#828282;
   font-size:10pt;
+  
+}
+.news-title{
+  margin:0;
+}
+.link-text{
   
 }
 </style>

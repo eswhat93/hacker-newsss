@@ -1,29 +1,22 @@
 <template>
-  <div>
-    
-  </div>
+  <section>
+    <div v-for="job in fetchedJob" :key="job.id">
+      {{job.title}}
+      <abbr>{{job.url}}</abbr>
+      <small>{{job.time_ago}}</small>
+    </div>
+  </section>
 </template>
 
 
 <script>
-import { fetchJobsList } from '../api/index.js'
+import { mapGetters } from 'vuex'
 export default {
-  data:()=>{
-    return{
-      jobs:[]
-    }
+  computed:{
+    ...mapGetters(['fetchedJob'])
   },
   created(){
-    const vm = this;
-
-    fetchJobsList()
-      .then((response)=>{
-        console.log(response.data);
-        vm.jobs = response.data
-      })
-      .catch(
-
-      )
+    this.$store.dispatch('FETCH_JOBS')
   }
 }
 </script>

@@ -10,7 +10,9 @@ import ItemView from '../views/ItemView.vue'
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
+    //url 해시값 제거
     mode:'history',
+    //라우터 모듈화 해보기
     routes:[
         {
             path:'/',
@@ -34,12 +36,12 @@ export const router = new VueRouter({
 
         },
         {
-            path:'/user',
+            path:'/user/:id',
             component:UserView,
 
         },
         {
-            path:'/item',
+            path:'/item/:id',
             component:ItemView,
 
         },

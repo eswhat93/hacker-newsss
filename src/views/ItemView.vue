@@ -1,52 +1,60 @@
 <template>
-  <div class="small">
-    <line-chart :chart-data="datacollection"></line-chart>
-    <button @click="fillData()">Randomize</button>
+  <div>
+    <section>
+      <!-- 질문 상세 정보 -->
+      <div>
+        <div class="user-container">사용자 프로필</div>
+        <div>
+          <i class="fas fa-user"></i>
+          <router-link :to="`/user/${fetchedItem.user}`" class="user-description">
+            {{fetchedItem.user}}
+          </router-link>
+          <div class="time">{{fetchedItem.time_ago}}</div>
+        </div>
+        <h2 v-html="fetchedItem.title"></h2>
+      </div>
+      <div>{{fetchedItem.content}}</div>
+      
+      <textarea name="" id="" cols="30" rows="10"></textarea>
+      <button @onClick="submitComment" >add comment</button>
+    </section>
+    <section>
+      <!-- 질문 답변 -->
+    </section>
+    
   </div>
 </template>
 
 <script>
-  import LineChart from './chart/LineChart.vue'
-
-  export default {
-    components: {
-      LineChart
-    },
-    data () {
-      return {
-        datacollection: null
-      }
-    },
-    mounted () {
-      this.fillData()
-    },
-    methods: {
-      fillData () {
-        this.datacollection = {
-          labels: [this.getRandomInt(), this.getRandomInt()],
-          datasets: [
-            {
-              label: 'Data One',
-              backgroundColor: '#f87979',
-              data: [this.getRandomInt(), this.getRandomInt()]
-            }, {
-              label: 'Data One',
-              backgroundColor: '#f87979',
-              data: [this.getRandomInt(), this.getRandomInt()]
-            }
-          ]
-        }
-      },
-      getRandomInt () {
-        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
-      }
-    }
+import {mapGetters} from 'vuex'
+export default {
+  computed:{
+    ...mapGetters(['fetchedItem'])
   }
+  ,
+  methods:{
+    submitComment(){
+
+    }
+  },
+  created(){
+    const userId = this.$route.params.id;
+    this.$store.dispatch('FETCH_ITEM', userId)
+  }
+}
 </script>
 
-<style>
-  .small {
-    max-width: 600px;
-    margin:  150px auto;
-  }
+<style scoped>
+.user-container{
+  display: flex;
+}
+.fa-user{
+font-size:2.5rem;
+}
+.user-description{
+padding-left: 8px;
+}
+.time{
+  font-size:0.7px;
+}
 </style>
