@@ -22,26 +22,31 @@ export const router = new VueRouter({
             //url 주소
             path:'/news',
             //url에 해당하는 컴포넌트
+            name:'news',
             component:NewsView,
 
         },
         {
             path:'/ask',
+            name:'ask',
             component:AskView,
 
         },
         {
             path:'/jobs',
+            name:'jobs',
             component:JobsView,
 
         },
         {
             path:'/user/:id',
+            name:'user',
             component:UserView,
 
         },
         {
             path:'/item/:id',
+            name:'item',
             component:ItemView,
 
         },

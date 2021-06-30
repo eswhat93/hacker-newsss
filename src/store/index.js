@@ -12,8 +12,8 @@ export const store = new Vuex.Store({
         news:[],
         jobs:[],
         ask:[],
-        user:[],
-        item:[]    
+        user:{},
+        item:{}    
     },
     getters:{
         //함수명만 바로 들고 오기 좋게
