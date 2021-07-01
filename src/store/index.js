@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 // import mutations from './mutations.js'
 // import actions from './actions.js'
-import { fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo,fetchItem} from '../api/index.js';
+import { fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo,fetchItem, fetchList} from '../api/index.js';
 
 Vue.use(Vuex);
 
@@ -13,7 +13,8 @@ export const store = new Vuex.Store({
         jobs:[],
         ask:[],
         user:{},
-        item:{}    
+        item:{},
+        list:[]    
     },
     getters:{
         //함수명만 바로 들고 오기 좋게
@@ -48,6 +49,9 @@ export const store = new Vuex.Store({
         },
         SET_ITEM(state,item){
             state.item = item
+        },
+        SET_LIST(state, list){
+            state.list = list
         }
     },
     actions:{
@@ -55,6 +59,7 @@ export const store = new Vuex.Store({
             fetchNewsList()
             .then(response =>{
                 context.commit('SET_NEWS', response.data);
+                return response;
             })
             .catch(error=>{
                 console.log(error);
@@ -91,6 +96,13 @@ export const store = new Vuex.Store({
             .then(({data})=>{
                 commit('SET_ITEM',data)
             })
+        },
+        FETCH_LIST({commit}, pageName){
+            fetchList(pageName)
+            .then(({data})=>{
+                commit('SET_LIST',data)
+            })
+            .catch((error)=>{console.log(error)})
         }
     }
 })

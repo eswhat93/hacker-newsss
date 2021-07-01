@@ -27,10 +27,15 @@ function fetchItem(userId){
     return axios.get(`${config.baseUrl}item/${userId}.json`)
 }
 
+function fetchList(pageName){
+    return axios.get(`${config.baseUrl}${pageName}/1.json`)
+}
+
 export{
     fetchNewsList,
     fetchJobsList,
     fetchAskList,
     fetchUserInfo,
-    fetchItem
+    fetchItem,
+    fetchList
 }

@@ -39,35 +39,35 @@
 
 <script>
 export default {
-  created(){
-      const name = this.$route.name;
-      let pageName=""
-      if(name=="news"){
-          pageName = 'FETCH_NEWS'
-      }else if(name=="jobs"){
-          pageName = 'FETCH_JOBS'
-      }else if(name=="ask"){
-          pageName = 'FETCH_ASK'
-      }else if(name=="user"){
-          pageName = 'FETCH_JOBS'
-      }
-      this.$store.dispatch(pageName)
-    //this.$store.dispatch('FETCH_NEWS');
+   created(){
+  //     const name = this.$route.name;
+  //     let pageName=""
+  //     if(name=="news"){
+  //         pageName = 'FETCH_NEWS'
+  //     }else if(name=="jobs"){
+  //         pageName = 'FETCH_JOBS'
+  //     }else if(name=="ask"){
+  //         pageName = 'FETCH_ASK'
+  //     }else if(name=="user"){
+  //         pageName = 'FETCH_JOBS'
+  //     }
+  //     this.$store.dispatch(pageName)
+  //   //this.$store.dispatch('FETCH_NEWS');
+    
   },
   computed:{
     listItems(){
-        const name = this.$route.name;
-        console.log(this.$route);
-        if(name=="news"){
-        return this.$store.state.news
-        }else if(name=="jobs"){
-            return this.$store.state.jobs
-        }else if(name=="ask"){
-            return this.$store.state.ask
-        }else if(name=="user"){
-            return this.$store.state.user
-        }
-        return 0;
+        // const name = this.$route.name;
+        // if(name=="news"){
+        // return this.$store.state.news
+        // }else if(name=="jobs"){
+        //     return this.$store.state.jobs
+        // }else if(name=="ask"){
+        //     return this.$store.state.ask
+        // }else if(name=="user"){
+        //     return this.$store.state.user
+        // }
+        return this.$store.state.list;
     }
   }
  }
