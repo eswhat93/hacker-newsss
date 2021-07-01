@@ -16,6 +16,7 @@
                         {{item.title}}
                     </a>
                 </template>
+                <!-- 질문상세 페이지 -->
                 <template v-else>
                     <router-link :to="`/item/${item.id}`">
                         {{item.title}}

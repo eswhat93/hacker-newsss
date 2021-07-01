@@ -3,30 +3,19 @@ import Vuex from 'vuex'
 
 // import mutations from './mutations.js'
 // import actions from './actions.js'
-import { fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo,fetchItem, fetchList} from '../api/index.js';
+import { fetchUserInfo,fetchItem, fetchList} from '../api/index.js';
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state:{
-        news:[],
-        jobs:[],
-        ask:[],
         user:{},
         item:{},
         list:[]    
     },
     getters:{
         //함수명만 바로 들고 오기 좋게
-        fetchedNews(state){
-            return state.news;
-        },
-        fetchedJob(state) {
-            return state.jobs 
-        },
-        fetchedAsk(state){
-            return state.ask;
-        },
+       
         fetchedUser(state){
             return state.user;
         },
@@ -35,15 +24,7 @@ export const store = new Vuex.Store({
         }
     },
     mutations:{
-        SET_NEWS(state, news){
-            state.news = news;
-        },
-        SET_JOBS(state, jobs){
-            state.jobs = jobs;
-        },
-        SET_ASK(state,ask){
-            state.ask = ask;
-        },
+        
         SET_USER(state, user){
             state.user = user
         },
@@ -55,36 +36,7 @@ export const store = new Vuex.Store({
         }
     },
     actions:{
-        FETCH_NEWS(context){
-            fetchNewsList()
-            .then(response =>{
-                context.commit('SET_NEWS', response.data);
-                return response;
-            })
-            .catch(error=>{
-                console.log(error);
-            })
-        },
-        FETCH_JOBS({commit}){
-            fetchJobsList()
-            .then(({data}) =>{
-                commit('SET_JOBS', data);
-                console.log(data)
-            })
-            .catch(error=>{
-                console.log(error);
-            })
-        },
-        FETCH_ASK({commit}){
-            fetchAskList()
-            .then(({data})=>{
-                commit('SET_ASK', data)
-                console.log(data)
-            })
-            .catch(error=>{
-                console.log(error);
-            })
-        },
+        
         FETCH_USER({commit}, name){
             fetchUserInfo(name)
             .then(({data})=>{
@@ -94,6 +46,7 @@ export const store = new Vuex.Store({
         FETCH_ITEM({commit}, id){
             fetchItem(id)
             .then(({data})=>{
+                console.log(data);
                 commit('SET_ITEM',data)
             })
         },
@@ -101,6 +54,7 @@ export const store = new Vuex.Store({
             fetchList(pageName)
             .then(({data})=>{
                 commit('SET_LIST',data)
+                
             })
             .catch((error)=>{console.log(error)})
         }
