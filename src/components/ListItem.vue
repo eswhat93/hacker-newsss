@@ -19,7 +19,7 @@
                 <!-- 질문상세 페이지 -->
                 <template v-else>
                     <router-link :to="`/item/${item.id}`">
-                        {{item.title}}
+                        {{item.title}} <em>comments : ({{ item.comments_count }})</em>
                     </router-link>
                 </template>
             </p>
