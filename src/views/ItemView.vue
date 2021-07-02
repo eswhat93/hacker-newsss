@@ -17,10 +17,10 @@
     <section>
       <!-- 질문 답변 -->
       <!-- 대댓글의 표현은? 여기부터 컴포넌트화 -->
-      <ul v-for="(commentOne) in fetchedItem.comments" :key="commentOne.id">
+      <ul v-for="(commentOne) in fetchedItem.comments" :key="commentOne.id" :v-model="tree">
         <small>{{commentOne.time_ago}}{{commentOne.user}}</small>
         <li v-html="commentOne.content"></li>
-        대댓글
+        *
         <tree :tree-data="tree"></tree>
       </ul>
       
@@ -37,7 +37,7 @@ import Tree from './Tree.vue';
 export default {
   data:()=>{
     return{
-      tree: ''
+      tree: {}}
     }
   },
   components:{
@@ -56,8 +56,8 @@ export default {
   created(){
     const userId = this.$route.params.id;
     this.$store.dispatch('FETCH_ITEM', userId)
-    this.tree = this.$store.state.item
-  }
+  },
+  
 }
 </script>
 

@@ -11,7 +11,7 @@
 import NodeTree from './NodeTree.vue'
 export default {
     props:{
-        treeData:Object
+        treeData:{}
     },
     components:{
         NodeTree
