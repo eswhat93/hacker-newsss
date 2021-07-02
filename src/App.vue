@@ -4,7 +4,7 @@
     <transition name="page">
       <router-view></router-view>
     </transition>
-    <spinner :loading="false"></spinner>
+    <spinner :loading="loadingStatus"></spinner>
   </div>
 </template>
 

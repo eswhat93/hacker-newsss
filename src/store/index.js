@@ -38,24 +38,28 @@ export const store = new Vuex.Store({
     actions:{
         
         FETCH_USER({commit}, name){
-            fetchUserInfo(name)
-            .then(({data})=>{
-              commit('SET_USER',data)  
-            })
+            return fetchUserInfo(name)
+                .then(({data})=>{
+                commit('SET_USER',data)  
+                })
         },
         FETCH_ITEM({commit}, id){
-            fetchItem(id)
-            .then(({data})=>{
-                console.log(data);
-                commit('SET_ITEM',data)
-            })
+            return fetchItem(id)
+                .then(({data})=>{
+                    console.log(data);
+                    commit('SET_ITEM',data)
+                })
         },
         FETCH_LIST({commit}, pageName){
-            fetchList(pageName)
-            .then(({data})=>{
-                commit('SET_LIST',data)
-                
-            })
+            //2번째
+            console.log(2);
+            return fetchList(pageName)
+                .then(response=>{
+                    //4번째
+                    console.log(4);
+                    commit('SET_LIST',response.data)
+                    return response;
+                })
             .catch((error)=>{console.log(error)})
         }
     }
