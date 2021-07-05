@@ -5,6 +5,7 @@ import ItemView from '../views/ItemView.vue'
 import NewsView from '../views/NewsView.vue'
 import JobsView from '../views/JobsView.vue'
 import AskView from '../views/AskView.vue'
+import SignInView from '../views/SignInView.vue'
 
 // import createListView from '../views/CreateListView.js'
 import bus from '../utils/bus'
@@ -20,7 +21,12 @@ export const router = new VueRouter({
     routes:[
         {
             path:'/',
-            redirect:'/news'
+            redirect:'/sign'
+        },
+        {
+            path:'/sign',
+            name:'sign',
+            component:SignInView
         },
         {
             //url 주소
@@ -81,7 +87,6 @@ export const router = new VueRouter({
             component:ItemView,
 
         },
-
     ]
 });
 
