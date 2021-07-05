@@ -36,31 +36,34 @@ export const store = new Vuex.Store({
         }
     },
     actions:{
-        
-        FETCH_USER({commit}, name){
-            return fetchUserInfo(name)
-                .then(({data})=>{
-                commit('SET_USER',data)  
-                })
+        async FETCH_USER(context, name){
+            const response = await fetchUserInfo(name);
+            context.commit('SET_USER', response.data);
+            return response;
         },
-        FETCH_ITEM({commit}, id){
-            return fetchItem(id)
-                .then(({data})=>{
-                    console.log(data);
-                    commit('SET_ITEM',data)
-                })
+        async FETCH_ITEM(context, id){
+            const response = await fetchItem(id);
+            context.commit('SET_ITEM', response.data);
+            return response;
         },
-        FETCH_LIST({commit}, pageName){
-            //2번째
-            console.log(2);
-            return fetchList(pageName)
-                .then(response=>{
-                    //4번째
-                    console.log(4);
-                    commit('SET_LIST',response.data)
-                    return response;
-                })
-            .catch((error)=>{console.log(error)})
+        //promise
+        // FETCH_LIST({commit}, pageName){
+        //     //2번째
+        //     console.log(2);
+        //     return fetchList(pageName)
+        //         .then(response=>{
+        //             //4번째
+        //             console.log(4);
+        //             commit('SET_LIST',response.data)
+        //             return response;
+        //         })
+        //     .catch((error)=>{console.log(error)})
+        // },
+        //async
+        async FETCH_LIST(context, pageName){
+            const response = await fetchList(pageName);
+            context.commit('SET_LIST', response.data);
+            return response;
         }
     }
 })
