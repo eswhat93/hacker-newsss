@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <ToolBar></ToolBar>
+    <ToolBar @send="changeMode"></ToolBar>
     <transition name="page">
       <router-view></router-view>
     </transition>
@@ -29,11 +29,20 @@ export default {
     },
     endSpinner(){
       this.loadingStatus = false;
+    },
+    changeMode(){
+      const body = document.querySelector("#app");
+      let bodyColor=""
+      if(localStorage.getItem("mode")==="far") bodyColor="white"
+      else bodyColor="#0d1505"
+
+      body.style.backgroundColor=bodyColor;
     }
   },
   created(){
     bus.$on('start:spinner', this.startSpinner);
     bus.$on('end:spinner', this.endSpinner);
+    bus.$on('send',this.changeMode);
   },
   beforeDestroy(){
     bus.$off('start:spinner', this.startSpinner);
@@ -46,6 +55,7 @@ export default {
 body{
   padding:0;
   margin: 0;
+  background-color:white ;
 }
 
 /* router-transition */
