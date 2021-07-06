@@ -21,7 +21,7 @@ export const router = new VueRouter({
     routes:[
         {
             path:'/',
-            redirect:'/sign'
+            redirect:'/news'
         },
         {
             path:'/sign',

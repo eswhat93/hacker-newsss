@@ -37,7 +37,7 @@ import Tree from './Tree.vue';
 export default {
   data:()=>{
     return{
-      tree: {}}
+      tree: {}
     }
   },
   components:{
