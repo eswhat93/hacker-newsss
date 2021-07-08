@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <h1>HACKER NEWS</h1>
+    <router-link to="/news"><h1>HACKER NEWS</h1></router-link>
     <section class="container">
         <router-link to="/news">news</router-link><div class="barItem">|</div>  
         <router-link to="/ask">ask</router-link><div class="barItem">|</div>  
@@ -9,7 +9,7 @@
         <router-link to="/item">item</router-link>
         <router-link to="/sign">sign</router-link>
     </section>
-        <!-- <div target="_blank" @click="openSignIn()"><h3>sign in</h3></div> -->
+        <div target="_blank" @click="openSignIn()"><h3>sign in</h3></div>
         <i class="mode far fa-sun" v-on:click="changeMode"></i>
         
 </div>
