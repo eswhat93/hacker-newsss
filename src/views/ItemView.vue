@@ -11,7 +11,7 @@
       <p v-html="fetchedItem.content"></p>
     </section>
     <section>
-      <textarea name="" id="" cols="30" rows="10"></textarea>
+      <vue-editor></vue-editor>
       <button>add comment</button>
     </section>
     <section>
@@ -33,6 +33,7 @@ import UserProfile from '../components/UserProfile.vue';
 import {mapGetters} from 'vuex';
 
 import Tree from './Tree.vue';
+import VueEditor from './VueEditor.vue'
 
 export default {
   data:()=>{
@@ -42,7 +43,8 @@ export default {
   },
   components:{
     UserProfile,
-    Tree
+    Tree,
+    VueEditor
   },
   computed:{
     ...mapGetters(['fetchedItem']),
@@ -77,4 +79,6 @@ padding-left: 8px;
 li{
   list-style: none;
 }
+
+
 </style>
